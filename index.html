@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>TheJMA (Job Mine Algorithm)</title>
+    <title>TheRMA (Rank Match Algorithm)</title>
   </head>
 
   <body>
@@ -46,11 +46,27 @@
 Generic Company 5 .... Offer
 </code></pre>
 
-<p>Bob is really proud of himself, <em>he got ranked by Google!</em> However, Bob has no idea whether he is ranked second or fifth and he's nervous that if he doesn't rank Generic Company 5 first he might not get a job at all. So that's what Bob does, he ranks both companies 1 (which guarantees he will end up at Generic Company). </p>
+<p>Bob is really proud of himself, <em>he got ranked by Google!</em> However, Bob has no idea whether he is ranked second or fifth and he's nervous that if he doesn't rank Generic Company 5 first he might not get a job at all. So that's what Bob does, he ranks both Generic Company 1 (which guarantees he will end up at Generic Company). </p>
 
 <p>SuperCoder Man meanwhile finally gets that position at the league of super co-op students he wanted, so he declines the Google position.</p>
 
-<p>Now even though Bob would have preferred Google to any of the other companies and Google would have preferred Bob to any of the available candidates, they end up being separated. And it's all thanks to the machinations of the Evil Job Mine Algorithm!</p>
+<p>Now even though Bob would have preferred Google to any of the other companies and Google would have preferred Bob to any of the available candidates, they end up being separated. And it's all thanks to the machinations of the Rank Match Algorithm!</p>
+      
+<h3>It's not just Bob</h3>
+
+<p>This isn't just a one of problem. Have you ever tried to explain how Rank Match works to someone? It's hard to explain because it doesn't make sense. Rank match is very complicated and unintuitive and it puts a curtain between employers and coops sutdents that forces them to guess about each other's rankings if they want to get the highest available choice.</p>
+
+<h3>The Solution</h3>
+
+<p>The solution is simple. Have companies rank all the students they want in order. Have all students rank the companies they want in order.
+  If a company is looking for <i>n</i> students then the first n students will be given an offer. Any student who gets multiple offers will hold on to the one which they have ranked the highest and decline all the others.
+  Any declined offer is then presented to the next student on the comapnies list.</p>
+  
+<p>If re-offering the declined offers causes anyone to have multiple offers again, they will once again keep the one they ranked highest and decline the rest. Repeat until everyone is holding one and only one offer.</p>
+
+<p>This system is very straightforward. Every student is guaranteed to end up at the company they wanted most which also wanted them. Each company gets the students they wanted most who also wanted them.</p>
+
+<p>No more having to guess what the other side is thinking in order to get a good match. Never again will you have to choose between ranking your dream company first and risking not getting a job.</p>
       </section>
     </div>
 
