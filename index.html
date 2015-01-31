@@ -124,7 +124,7 @@ Bob:
 
 <p>This system is very straightforward. Every student is guaranteed to end up at the best company available to them. Each company gets the best student available to them. No more having to guess what the other side is thinking in order to get a good match. No one will have to choose between ranking their dream company first and risking not getting a job.</p>
 
-<p>Compare the outcomes for Bob and in this scenario with the current Rank Match algorithm. Bob got his first ranked job instead of his second, without having to risk getting no job. And Google was able to get thier second choice instead of their third. Everyone was better off. In fact this solution - which I'm going to dub SimpleMatch - performs as well as or better than the existing Rank Match algorithm in all situations. As an added bonus students no longer have to try and guess what companies are going to do and companies no longer need to break the rules to contact students outside of the system.</p>
+<p>Compare the outcomes for Bob and in this scenario with the current Rank Match algorithm. Bob got his first ranked job instead of his second, without having to risk getting no job. And Google was able to get thier second choice instead of their third. Everyone was better off. In fact this solution - which I'm going to call SimpleMatch - performs as well as or better than the existing Rank Match algorithm in all situations. As an added bonus students no longer have to try and guess what companies are going to do and companies no longer need to break the rules to contact students outside of the system.</p>
 
 <h3>What to do about it?</h3>
 
@@ -202,6 +202,16 @@ Bob:
           .html('<div class="thanks">Thank you for your Support!</div>');
       }
     });
+  </script>
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53575903-3', 'auto');
+  ga('send', 'pageview');
   </script>
   </body>
 </html>
