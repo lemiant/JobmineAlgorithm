@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Rank Match is bad. Here&#39;s a proposal to improve it." />
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
     <title>The JobMine Algorithm</title>
@@ -45,12 +46,12 @@
 <p>The day they release the results of the rankings Bob is sitting there refreshing his computer and this comes up:</p>
 
 <pre><code>Google ............... Ranked
-Generic Company .... Offer
+Generic Company ...... Offer
 </code></pre>
 
 <p>Bob is really proud of himself, <em>he got ranked by Google!</em> However, Bob has no idea whether he is ranked second or fifth and he's nervous that if he doesn't rank Generic Company first he might not get a job at all. So that's what Bob does, he ranks Generic Company #1 (which guarantees he will end up at Generic Company). </p>
 
-<p>SuperCoder Man meanwhile finally gets that position at the league of super co-op students he wanted, so he declines the Google position.</p>
+<p>SuperCoder Man, meanwhile, finally gets that position at the league of super co-op students he wanted, so he declines the Google position.</p>
 
 <p>Now even though Bob would have preferred Google to any of the other companies and Google would have preferred Bob to any of the available candidates, they end up being separated. And it's all thanks to the machinations of the Rank Match Algorithm!</p>
       
@@ -84,7 +85,33 @@ Generic Company .... Offer
 
 <h3>What to do about it?</h3>
 
-<p>Waterloo is currently working on a replacement for Jobmine called Waterloo Works, and they are looking for community feedback. If we work together we can replace the Rank Match Algorithm and make co-op better for everyone.</p>
+<p>Waterloo is currently working on a replacement for Jobmine called Waterloo Works, and they are looking for community feedback. If we work together we can replace the Rank Match Algorithm and make co-op better for everyone. Enter your name and uwaterloo.ca email below to sign the petition for a better Jobmine.</p>
+
+<style>
+  .short {
+    width: 180px;
+    display: inline;
+    margin-right: 6px;
+  }
+  .petition {
+    margin-top: 18px;
+  }
+  .thanks {
+    margin-top: 18px;
+    padding: 10px;
+    background-color: rgb(201, 218, 190);
+    border-radius: 15px;
+    text-align: center;
+  }
+  .error {
+    background-color: rgb(255, 216, 216);
+  }
+</style>
+<div class="petition">
+  <input type="text" class="form-control short" id="name" placeholder="Name" />
+  <input type="text" class="form-control short" id="email" placeholder="me@uwaterloo.ca" /><br />
+  <button class="btn btn-primary" style="margin: 10px 0" id="submit">Please Fix Jobmine!</button>
+</div>
       </section>
     </div>
 
@@ -96,7 +123,44 @@ Generic Company .... Offer
       </footer>
     </div>
 
-    
+  <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+    function verifyPetition () {
+      var $name = $(".petition #name");
+      var $email = $(".petition #email");
+      var success = true;
 
+      if ($name.val().length < 2){
+        $name.addClass("error");
+        success = false;
+      }
+
+      if (!/\s*[\w]{3,20}@uwaterloo.ca\s*/.test($email.val())) {
+        $email.addClass("error");
+        success = false;
+      }
+
+      return success;
+    }
+    $(".petition input").on("keypress", function(){
+      $(this).removeClass("error");
+    })
+
+    var ref = new Firebase("https://radiant-fire-3867.firebaseio.com/");
+    $(".petition #submit").on("click", function() {
+      if (verifyPetition()) {
+        ref.push({
+          name: $(".petition #name").val(),
+          email: $(".petition #email").val()
+        });
+        $(".petition")
+          .height($(".petition").height())
+          .html('<div class="thanks">Thank you for your Support!</div>');
+      }
+    });
+
+
+  </script>
   </body>
 </html>
