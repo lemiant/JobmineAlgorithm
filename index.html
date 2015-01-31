@@ -22,7 +22,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/lemiant/JobmineAlgorithm">A Petition</a>
+          <span id="forkme_banner">A Petition</span>
 
           <h1 id="project_title">The JobMine Algorithm</h1>
           <h2 id="project_tagline">Rank Match is bad. Here&#39;s a proposal to improve it.</h2>
@@ -124,7 +124,7 @@ Bob:
 
 <p>This system is very straightforward. Every student is guaranteed to end up at the best company available to them. Each company gets the best student available to them. No more having to guess what the other side is thinking in order to get a good match. No one will have to choose between ranking their dream company first and risking not getting a job.</p>
 
-<p>Compare the outcomes for Bob and in this scenario with the current Rank Match algorithm. Bob got his first ranked job instead of his second, without having to risk getting no job. And Google was able to get thier second choice instead of their third. Everyone was better off. In fact this solution - which I'm going to call SimpleMatch - performs as well as or better than the existing Rank Match algorithm in all situations. As an added bonus students no longer have to try and guess what companies are going to do and companies no longer need to break the rules to contact students outside of the system.</p>
+<p>Compare the outcomes for Bob and in this scenario with the current Rank Match algorithm. Bob got his first ranked job instead of his second, without having to risk getting no job. And Google was able to get their second choice instead of their third. Everyone was better off. In fact this solution - which I'm going to call SimpleMatch - performs as well as or better than the existing Rank Match algorithm in all situations. As an added bonus students no longer have to try and guess what companies are going to do and companies no longer need to break the rules to contact students outside of the system.</p>
 
 <h3>What to do about it?</h3>
 
@@ -200,7 +200,7 @@ Bob:
         $(".petition")
           .height($(".petition").height())
           .html('<img class="spinner" src="images/spinner.gif" />');
-          
+
         ref.push({
           name: name,
           email: email
@@ -216,6 +216,11 @@ Bob:
         });
       }
     });
+
+    ref.on("value", function(v){
+      var len = Object.keys(v.val()).length;
+      $("#forkme_banner").text(len+" Supporters");
+    })
   </script>
   <!-- Google Analytics -->
   <script>
