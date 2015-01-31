@@ -22,7 +22,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/lemiant/JobmineAlgorithm">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/lemiant/JobmineAlgorithm">A Petition</a>
 
           <h1 id="project_title">The JobMine Algorithm</h1>
           <h2 id="project_tagline">Rank Match is bad. Here&#39;s a proposal to improve it.</h2>
@@ -191,15 +191,29 @@ Bob:
     })
 
     var ref = new Firebase("https://radiant-fire-3867.firebaseio.com/");
+
     $(".petition #submit").on("click", function() {
       if (verifyPetition()) {
-        ref.push({
-          name: $(".petition #name").val(),
-          email: $(".petition #email").val()
-        });
+        var name = $(".petition #name").val();
+        var email = $(".petition #email").val();
+
         $(".petition")
           .height($(".petition").height())
-          .html('<div class="thanks">Thank you for your Support!</div>');
+          .html('<img class="spinner" src="images/spinner.gif" />');
+          
+        ref.push({
+          name: name,
+          email: email
+        }, function(error) {
+          if (error) {
+            $(".petition")
+              .html('An error occured, sorry! Please bug me about it: '+
+                '<a href="https://www.facebook.com/alex.rodrigues.908579">https://www.facebook.com/alex.rodrigues.908579</a> <br />"'+error+'"');
+          } else {
+            $(".petition")
+              .html('<div class="thanks">Thank you for your Support!</div>'); 
+          }
+        });
       }
     });
   </script>
