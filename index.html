@@ -8,6 +8,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <style>
+      i {
+        font-style: italic;
+      }
+    </style>
 
     <title>The JobMine Algorithm</title>
   </head>
@@ -34,11 +39,11 @@
 
 <h4>Bob's Dilemma</h4>
 
-<p>Bob applies to Google and Generic Company. He likes both, but like all of us his childhood dream is to work at Google. His interviews go really well, but he's still nervous. Bob knows everyone and their dog applies to Google. Google really likes Bob too, but they were even more impressed by SuperCoder man and his ability to type 5000 words per minute.</p>
+<p>Bob applies to Google and Random Company. He likes both, but like all of us his childhood dream is to work at Google. His interviews go really well, but he's still nervous. Bob knows everyone and their dog applies to Google. Google really likes Bob too, but they were even more impressed by SuperCoder man and his ability to type 5000 words per minute.</p>
 
 <p>In the end Google decides to rank Bob second:</p>
 
-<pre><code>1. Super-coder man
+<pre><code>1. SuperCoder man
 2. Bob
 ...
 </code></pre>
@@ -46,46 +51,84 @@
 <p>The day they release the results of the rankings Bob is sitting there refreshing his computer and this comes up:</p>
 
 <pre><code>Google ............... Ranked
-Generic Company ...... Offer
+Random Company ...... Offer
 </code></pre>
 
-<p>Bob is really proud of himself, <em>he got ranked by Google!</em> However, Bob has no idea whether he is ranked second or fifth and he's nervous that if he doesn't rank Generic Company first he might not get a job at all. So that's what Bob does, he ranks Generic Company #1 (which guarantees he will end up at Generic Company). </p>
+<p>Bob is really proud of himself, <em>he got ranked by Google!</em> However, Bob has no idea whether he is ranked second or fifth and he's nervous that if he doesn't rank Random Company first he might not get a job at all. So that's what Bob does, he ranks Random Company #1 (which guarantees he will end up at Random Company). </p>
 
 <p>SuperCoder Man, meanwhile, finally gets that position at the league of super co-op students he wanted, so he declines the Google position.</p>
 
-<p>Now even though Bob would have preferred Google to any of the other companies and Google would have preferred Bob to any of the available candidates, they end up being separated. And it's all thanks to the machinations of the Rank Match Algorithm!</p>
+<p>Now even though Bob would have preferred Google to any of the other companies and Google would have preferred Bob to any of the available candidates, they end up being separated. And it's all thanks to the problems of the Rank Match Algorithm!</p>
       
-<h4>Poor Recruiters</h4>
+<h4>Bad for Companies too</h4>
 
-<p>As a recruiter, choosing who to rank first is a big decision. If a student doesn't see "offer" from you when it comes to selection time they will likely take the safe road and choose someone else who did give them the offer.</p>
+<p>For a company, choosing who to rank first is a big decision. If a student doesn't see "offer" from them when it comes to selection time the student will likely take the safe road and choose someone else, even if that company was their top choice.</p>
 
-<p>This means that if a company has three top candidates and the person they extend the offer to declines them, they will likely lose the other top candidates as well. This makes it hard on companies and even encourages them to violate the rules of JobMine and contact their top students outside of the system to find out if they would accept the offerr.</p>
+<p>This means that if a company has three top candidates and the person they extend the offer to declines them, they will likely lose the other top candidates as well. This makes it hard on companies. It encourages good companies to leave JobMine or to violate the rules of JobMine and contact their top students outside of the system. Presenting offers to top students before deciding who to pick on JobMine has become common practice even though it is strictly against the rules.</p>
 
-<p>I know many people and many companies for which this actually has happened. And it makes sense since this is exactly what the current system is forcing them to do.</p>
-
-<h3>It's not just Bob</h3>
-
-<p>These poor folks aren't on their own. Have you ever tried to explain how Rank Match works to someone? It's not easy to understand. Rank Match is very complicated and unintuitive. It puts a curtain between employers and coops sutdents that forces them to guess about each other's rankings if they want to get the best available choice.</p>
+<p>I know many people and many companies for which this has actually happened. And it makes sense since this is exactly what the current system is forcing them to do.</p>
 
 <h3>The Solution</h3>
 
-<p>The solution is simple. The current system penalizes students who rank their true top choice #1 without getting offer, because it decreases their odds of getting other jobs. Stop doing that and these problems go away.</p>
+<p>The solution is simple. Match up the best jobs with the best students!</p>
 
-<p>One way of acheiving that is to have companies rank all the students they want in order and have all students rank the companies they want in order.
-  If a company is looking for <i>n</i> students then the first n students will be given an offer. Any student who gets multiple offers will hold on to the one which they have ranked the highest and decline all the others.
-  Any declined offer is then presented to the next student on the company's list.</p>
-  
-<p>If re-offering the declined offers causes anyone to have multiple offers again, they will once again keep the one they ranked highest and decline the rest. Repeat until everyone is holding one and only one offer. At the end of this each student will be holding the offer which, out of all the one they received, they wanted the most</p>
+<p>No more fancy ranking method where you can have four companies ranked #1. Just rank companies in the order that you want them:</p>
 
-<p>This system is very straightforward. Every student is guaranteed to end up at the company they wanted most which also wanted them. Each company gets the students they wanted most who also wanted them.</p>
+<pre><code>SuperCoder man's Rankings:
+1. League of Super Co-ops
+2. Google
 
-<p>No more having to guess what the other side is thinking in order to get a good match. No one will have to choose between ranking their dream company first and risking not getting a job.</p>
+Bob's Rankings:
+1. Google
+2. Random Company
+</code></pre>
 
-<p>Go back and look at the Bob/Google scenario under this system. Bob would rank Google first because there is no penalty for it (i.e. he still holds the offer for the other jobs, unless he gets matched with Google) and they would end up together :).</p>
+<p>Then the companies rank students in order:</p>
+
+<pre><code>Google's Rankings:
+1. SuperCoder man
+2. Bob
+
+Random Company's Rankings:
+1. Bob
+...
+
+League of Super Co-ops' Rankings:
+1. SuperCoder man
+...
+</code></pre>
+
+<p>Now we run the our new matching algorithm with that data. First the top ranked student for each job gets the offer. SuperCoder man ends up with an offer from <i>The League</i> and one from Google. He keeps the offer he wanted most (<i>The League</i>) and returns the rest. Here's what it looks like after the first pass:</p>
+
+<pre><code>SuperCoder man:
+1. League of Super Co-ops (Offer)
+2. Google (Returned offer)
+
+Bob:
+1. Google
+2. Random Company (Offer)
+</code></pre>
+
+<p>Now any returned offers are given to the second ranked coop student. This means that the Google offer gets passed on to Bob. Now Bob has more than one offer so he keeps the Google one and returns the rest: </p>
+
+<pre><code>SuperCoder man:
+1. League of Super Co-ops (Offer)
+2. Google (Returned offer)
+
+Bob:
+1. Google (Offer)
+2. Random Company (Returned offer)
+</code></pre>
+
+<p>This process is repeated over and over until each coop student is holding a single offer - that's their coop job.</p>
+
+<p>This system is very straightforward. Every student is guaranteed to end up at the best company available to them. Each company gets the best student available to them. No more having to guess what the other side is thinking in order to get a good match. No one will have to choose between ranking their dream company first and risking not getting a job.</p>
+
+<p>Compare the outcomes for Bob and in this scenario with the current Rank Match algorithm. Bob got his first ranked job instead of his second, without having to risk getting no job. And Google was able to get thier second choice instead of their third. Everyone was better off. In fact this solution - which I'm going to dub SimpleMatch - performs as well as or better than the existing Rank Match algorithm in all situations. As an added bonus students no longer have to try and guess what companies are going to do and companies no longer need to break the rules to contact students outside of the system.</p>
 
 <h3>What to do about it?</h3>
 
-<p>Waterloo is currently working on a replacement for Jobmine called Waterloo Works, and they are looking for community feedback. If we work together we can replace the Rank Match Algorithm and make co-op better for everyone. Enter your name and uwaterloo.ca email below to sign the petition for a better Jobmine.</p>
+<p>Waterloo is currently working on a replacement for Jobmine called Waterloo Works, and they are looking for community feedback. If we work together we can replace the Rank Match algorithm and make co-op better for everyone. Enter your name and uwaterloo.ca email below to sign the petition for a better Jobmine.</p>
 
 <style>
   .short {
@@ -118,7 +161,7 @@ Generic Company ...... Offer
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">TheJMA (Job Mine Algorithm) maintained by <a href="https://github.com/lemiant">lemiant</a></p>
+        <p class="copyright">The Job Mine Algorithm maintained by <a href="https://github.com/lemiant">lemiant</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
@@ -159,8 +202,6 @@ Generic Company ...... Offer
           .html('<div class="thanks">Thank you for your Support!</div>');
       }
     });
-
-
   </script>
   </body>
 </html>
